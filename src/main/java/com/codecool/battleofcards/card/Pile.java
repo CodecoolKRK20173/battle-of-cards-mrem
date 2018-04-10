@@ -4,10 +4,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 class Pile implements Comparable<Card> {
-    private LinkedList<Card> cards;
+    private List<Card> cards;
 
-    Pile(LinkedList<Card> cards) {
-        LinkedList<Card> cards = new LinkedList<Card>();
+    Pile(List<Card> cards) {
+        this.cards = new LinkedList<Card>();
         this.cards = cards;
     }
 
