@@ -26,7 +26,7 @@ class Pile implements Comparable<Card> {
     public Card getTopCard() {
         return cards.poll();
     }
-
+    @Override
     public int compareTo(Pile pile) {
         if(this.getCardsNumber() == pile.getCardsNumber()) {
             return 0;
