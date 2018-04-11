@@ -16,8 +16,8 @@ public class Pile implements Comparable<Pile> {
         return this.cards.size();
     }
 
-    public void addCards(List<Card> trophy) {
-       cards.addAll(trophy);
+    public void addCards(List<Card> newCards) {
+       cards.addAll(newCards);
     }
 
     public Card peekTopCard() {
@@ -26,6 +26,10 @@ public class Pile implements Comparable<Pile> {
 
     public Card getTopCard() {
         return cards.poll();
+    }
+
+    public boolean containsCard(Card card) {
+        return this.cards.contains(card);
     }
 
     @Override
