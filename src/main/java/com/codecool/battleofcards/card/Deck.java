@@ -6,17 +6,15 @@ import java.io.*;
 public class Deck implements Shuffleable{
 
     private List<Card> cards;
-    private String fileContent = readerFromFile();
 
-    public Deck(String fileContent){
-        this.fileContent = fileContent;
-        createCards(fileContent);
+    public Deck(String filename){
+        createCards(filename);
     }
 
-    private void createCards(String fileContent){
-        String[] listStatistics = fileContent.split("\n");
-     
-        for (String line : listStatistics){
+    private void createCards(String filename){
+        String[] statisticsList = readerFromFile(filename).split("\n");
+        
+        for (String line : statisticsList){
             String[] cardStatistic = line.split(",");
                 
                 String name = cardStatistic[0];
@@ -33,9 +31,11 @@ public class Deck implements Shuffleable{
                 double fourthValue = Double.valueOf(cardStatistic[4]);
                 CardAttribute fourthAttribute = new CardAttribute("Area (square km)", fourthValue);
 
-                CardAttributes[] attributes = {firstAttribute, secondAttribute, thirdAttribute, fourthAttribute};
-
-                this.cards.add(new Card(name, attributes));
+                this.cards.add(new Card(name,
+                                        firstAttribute,
+                                        secondAttribute,
+                                        thirdAttribute,
+                                        fourthAttribute));
             }
         }
 
@@ -43,38 +43,37 @@ public class Deck implements Shuffleable{
         Collections.shuffle(this.cards);
     }
 
-    public List<Pile> deal(int num){
-        List<Pile> piles = new ArrayList<>();
+    public List<Pile> deal(int numOfPlayers) {
+        List<Pile> piles = new ArrayList<Pile>();
 
-        int start = 0;
-        int numPlayer = this.cards.size() / num;
-
-        for(int i = 0; i<num; i++){
-            piles.add(new Pile(this.cards.sublist(start,numPlayer)));
-            start = numPlayer;
-            numPlayer += start;
+        int playerPileSize = this.cards.size() / numOfPlayers;
+        int nextPileStartPos = 0;
+        int nextPileEndPos = playerPileSize;
+        
+        for (int i = 0; i < numOfPlayers; i++) {
+            piles.add(new Pile(this.cards.subList(nextPileStartPos, nextPileEndPos)));
+            nextPileStartPos += playerPileSize;
+            nextPileEndPos += playerPileSize;
         }
+
         return piles;
     }
     
-    public String readerFromFile() {
-        String content = "";
+    public String readerFromFile(String filename) {
+        StringBuilder fileContent = new StringBuilder();
 
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader("statistics.csv"));
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line = reader.readLine();
+            while (line != null) {
+                fileContent.append(line);
+                fileContent.append("\n");
 
-            while(line != null){
-                content += line + "\n";
                 line = reader.readLine();      
             }
-                reader.close();
         } catch (IOException e) {
-            System.err.println("There is no such file");
-            System.exit(0);
-        }    
-        return content.toLowerCase();
+            e.printStackTrace();
+        }
+
+        return fileContent.toString();
     }
-
-
 }
