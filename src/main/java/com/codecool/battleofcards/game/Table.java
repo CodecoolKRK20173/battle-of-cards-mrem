@@ -2,9 +2,10 @@ package com.codecool.battleofcards.game;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Comparator;
 
 import com.codecool.battleofcards.card.Card;
-import com.codecool.battleofcards.card.comparators.*;
 
 public class Table {
     private List<Card> cards;
@@ -18,7 +19,6 @@ public class Table {
     public Table() {
         this.cards = new ArrayList<>();
         this.cardsAfterDraw = new ArrayList<>();
-        this.cardComparator = new Comparator();
     }
 
     public void setCards(List<Card> cards) {
@@ -50,9 +50,11 @@ public class Table {
         if (this.isRoundResolved) {
             return this.winningCard;
         }
+        return null;
     }
 
     public List<Card> getRoundTrophy() {
-        return this.cards.addAll(this.cardsAfterDraw);
+        this.cards.addAll(this.cardsAfterDraw);
+        return this.cards;
     }
 }
