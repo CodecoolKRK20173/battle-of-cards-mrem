@@ -1,17 +1,16 @@
 package com.codecool.battleofcards.game;
 
-import main.java.com.codecool.battleofcards.card.*;
-import main.java.com.codecool.battleofcards.display.*;
-import main.java.com.codecool.battleofcards.player.*;
+import com.codecool.battleofcards.card.*;
+import com.codecool.battleofcards.display.*;
+import com.codecool.battleofcards.player.*;
 
-import java.util.List;
 import java.util.*;
 
 class GameInitializer {
     private Deck deck;
     private List<Player> players;
-    private int playersNumber;
     private List<Pile> piles;
+    private int playersNumber;
 
     private GameView view = new GameView();
     private Scanner input = new Scanner(System.in);
@@ -22,7 +21,7 @@ class GameInitializer {
     public void initializeGame() {
         playersNumber = this.askNumberOfPlayers();
         this.createDeck();
-        this.dealCards(playersNumber);
+        this.dealCards();
         this.createPlayers();
     }
 
@@ -50,32 +49,39 @@ class GameInitializer {
         return input.nextLine().toLowerCase();
     }
 
-    private void createHumanPlayer(int humanNumber) {
-        for(int i = 0; i < humanNumber; i++) {
-            Player player = new HumanPlayer(view.askForName(), piles.get(i));
-            players.add(player);
+    private void createHumanPlayer(int playersNumber) {
+        for(int i = 0; i < playersNumber; i++) {
+            // TODO check - compilation error
+            //Player player = new HumanPlayer(view.askForName(), piles.get(i));
+            //players.add(player);
         }
     }
 
+    private void createHumanPlayer() {
+        createHumanPlayer(this.playersNumber);
+    }
+
     private void createComputerPlayer(int i) {
-            Player computerPlayer;
-            String level = view.askLevel();
-            switch(level) {
-                case "n": 
-                    computerPlayer = new NormalAI(piles.get(i));
-                    players.add(computerPlayer);
-                case "h": 
-                    computerPlayer = new HardAI(piles.get(i));
-                    players.add(computerPlayer);
-            }   
-        }
+        Player computerPlayer;
+        String level = this.askLevel();
+        switch(level) {
+            case "n": 
+                // TODO check - compilation error
+                // computerPlayer = new NormalAI(piles.get(i));
+                //players.add(computerPlayer);
+            case "h": 
+                // TODO check - compilation error
+                // computerPlayer = new HardAI(piles.get(i));
+                // players.add(computerPlayer);
+        }   
+    }
     
     private void createPlayers() {
         players = new ArrayList<Player>();
         String mode = askGameMode();
         switch(mode) {
             case "pvp":     
-                createHumanPlayer(playersNumber);
+                createHumanPlayer();
                 break;
             case "pvc":
                 int humanNumber = playersNumber - 1;
@@ -84,11 +90,11 @@ class GameInitializer {
                 createComputerPlayer(pileNumber);
                 break;
             default:
-
+                view.displayLine("There's no such option.");
         }     
     }
 
-    private void dealCards(int playersNumber) {
+    private void dealCards() {
         this.piles = deck.deal(playersNumber);
     }
 

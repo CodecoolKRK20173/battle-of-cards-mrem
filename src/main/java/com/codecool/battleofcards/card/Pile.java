@@ -3,7 +3,7 @@ package com.codecool.battleofcards.card;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Pile implements Comparable<Card> {
+public class Pile implements Comparable<Pile> {
     private LinkedList<Card> cards;
     
     Pile(List<Card> cards) {
