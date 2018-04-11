@@ -7,6 +7,7 @@ import com.codecool.battleofcards.player.*;
 import java.util.*;
 
 class GameInitializer {
+    private final String FILE_NAME;
     private Deck deck;
     private List<Player> players;
     private List<Pile> piles;
@@ -16,7 +17,9 @@ class GameInitializer {
     private Scanner input = new Scanner(System.in);
     
 
-    public GameInitializer() {}
+    public GameInitializer(String fileName) {
+        FILE_NAME = fileName;
+    }
 
     public void initializeGame() {
         playersNumber = this.askNumberOfPlayers();
@@ -26,7 +29,7 @@ class GameInitializer {
     }
 
     private void createDeck() {
-        deck = new Deck("statistics.csv");
+        deck = new Deck(FILE_NAME);
     }
 
     private String askGameMode() {
