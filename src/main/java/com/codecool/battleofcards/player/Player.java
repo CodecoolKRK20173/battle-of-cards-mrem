@@ -10,7 +10,7 @@ public abstract class Player {
         this.name = name;
     }
 
-    abstract getChoice();
+    abstract int getChoice();
 
     public String getName() {
         return this.name;
