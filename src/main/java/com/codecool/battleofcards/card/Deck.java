@@ -10,7 +10,7 @@ public class Deck implements Shuffleable{
 
     public Deck(String fileContent){
         this.fileContent = fileContent;
-        createCards(fileContent);
+        createCards(this.fileContent);
     }
 
     private void createCards(String fileContent){
@@ -33,7 +33,7 @@ public class Deck implements Shuffleable{
                 double fourthValue = Double.valueOf(cardStatistic[4]);
                 CardAttribute fourthAttribute = new CardAttribute("Area (square km)", fourthValue);
 
-                CardAttributes[] attributes = {firstAttribute, secondAttribute, thirdAttribute, fourthAttribute};
+                CardAttribute[] attributes = {firstAttribute, secondAttribute, thirdAttribute, fourthAttribute};
 
                 this.cards.add(new Card(name, attributes));
             }
@@ -44,13 +44,13 @@ public class Deck implements Shuffleable{
     }
 
     public List<Pile> deal(int num){
-        List<Pile> piles = new ArrayList<>();
+        List<Pile> piles = new ArrayList<Pile>();
 
         int start = 0;
         int numPlayer = this.cards.size() / num;
 
         for(int i = 0; i<num; i++){
-            piles.add(new Pile(this.cards.sublist(start,numPlayer)));
+            piles.add(new Pile(this.cards.subList(start,numPlayer)));
             start = numPlayer;
             numPlayer += start;
         }
