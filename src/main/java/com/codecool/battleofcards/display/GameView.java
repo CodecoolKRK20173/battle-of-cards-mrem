@@ -35,15 +35,14 @@ public class GameView {
     }
 
     public void displayTable(List<Player> players) {
-        int widthColumn = 50;
 
         for (Player player : players) {
-            System.out.print(centeredString(player.getName()) + " | ");
+            System.out.print(centeredString(player.getName()));
         }
-
         System.out.println("");
+
         for (Player player : players) {
-            System.out.print(centeredString(String.valueOf(player.getNumOfCards()))+ " | ");
+            System.out.print(centeredString("cards left: " + String.valueOf(player.getNumOfCards())));
         }
 
         System.out.println("");
@@ -51,16 +50,16 @@ public class GameView {
         for (Player player : players) {
             String[] printCard = player.getCards().peekTopCard().toString().split("\n");
             for (String card : printCard) {
-                System.out.print(centeredString(card + " | ");
+                System.out.print(centeredString(card);
             }
         }
         System.out.println("");
-        
+
     }
 
     public String centeredString(String text){
 
-        int widthColumn = 50;
+        int widthColumn = 30;
         int padSize = widthColumn - text.length();
         int padStart = text.length() + padSize / 2;
         text = String.format("%" + padStart + "s", text);
