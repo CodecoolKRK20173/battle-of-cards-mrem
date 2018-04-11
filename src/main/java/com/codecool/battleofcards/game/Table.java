@@ -33,7 +33,9 @@ public class Table {
         this.cardComparator = cardComparator;
     }
 
-    public void resolveRound() {
+    public void resolveRound(List<Card> roundCards) {
+        this.setCards(roundCards);
+
         this.winningCard = Collections.max(this.cards, this.cardComparator);
 
         this.isRoundResolved = true;  // Let's assume it is and check this assumption below
@@ -44,6 +46,10 @@ public class Table {
                 break;
             }
         }
+    }
+
+    public boolean isRoundResolved() {
+        return this.isRoundResolved;
     }
 
     public Card getWinningCard() {
