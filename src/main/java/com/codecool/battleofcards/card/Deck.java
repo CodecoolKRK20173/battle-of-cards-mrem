@@ -76,4 +76,8 @@ public class Deck implements Shuffleable{
 
         return fileContent.toString();
     }
+
+    public List<Card> getCards(){
+        return this.cards;
+    }
 }
