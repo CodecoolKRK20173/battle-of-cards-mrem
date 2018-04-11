@@ -4,11 +4,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 class Pile implements Comparable<Card> {
-    private List<Card> cards;
-
+    private LinkedList<Card> cards;
+    
     Pile(List<Card> cards) {
-        this.cards = new LinkedList<Card>();
-        this.cards = cards;
+        this.cards = new LinkedList<Card>(cards);
     }
 
     public int getCardsNumber() {
@@ -26,7 +25,7 @@ class Pile implements Comparable<Card> {
     public Card getTopCard() {
         return cards.poll();
     }
-
+    @Override
     public int compareTo(Pile pile) {
         if(this.getCardsNumber() == pile.getCardsNumber()) {
             return 0;
