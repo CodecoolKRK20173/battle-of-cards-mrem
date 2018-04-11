@@ -1,8 +1,8 @@
 package com.codecool.battleofcards.game;
 
-import com.codecool.battleofcards.card.*;
-import com.codecool.battleofcards.display.*;
-import com.codecool.battleofcards.player.*;
+import main.java.com.codecool.battleofcards.card.*;
+import main.java.com.codecool.battleofcards.display.*;
+import main.java.com.codecool.battleofcards.player.*;
 
 import java.util.List;
 import java.util.*;
@@ -31,49 +31,65 @@ class GameInitializer {
     }
 
     private String askGameMode() {
-        view.displayInputPrompt("Choose mode: PvP or PvC?");
-        return input.nextLine();
+        view.displayLine("Choose mode: PvP or PvC?");
+        return input.nextLine().toLowerCase();
     }
 
     private int askNumberOfPlayers() {
-        view.displayInputPrompt("How many players?(1-4)");
+        view.displayLine("How many players?(1-4)?");
         return input.nextInt();
     }
 
     private String askName() {
-        view.displayInputPrompt("What's your name?");
+        view.displayLine("What's your name?");
         return input.nextLine();
+    }
+
+    private String askLevel() {
+        view.displayInputPrompt("Choose level normal or hard[n/h]");
+        return input.nextLine().toLowerCase();
     }
 
     private void createHumanPlayer(int humanNumber) {
         for(int i = 0; i < humanNumber; i++) {
-            Player player = new HumanPlayer(askForName(), piles[i]);
+            Player player = new HumanPlayer(view.askForName(), piles.get(i));
             players.add(player);
         }
     }
 
     private void createComputerPlayer(int i) {
-            Player player = new ComputerPlayer("AI", piles[i]);
-            players.add(player);
+            Player computerPlayer;
+            String level = view.askLevel();
+            switch(level) {
+                case "n": 
+                    computerPlayer = new NormalAI(piles.get(i));
+                    players.add(computerPlayer);
+                case "h": 
+                    computerPlayer = new HardAI(piles.get(i));
+                    players.add(computerPlayer);
+            }   
         }
     
     private void createPlayers() {
         players = new ArrayList<Player>();
         String mode = askGameMode();
         switch(mode) {
-            case "PvP": case "PVP": case "pvp":     
+            case "pvp":     
                 createHumanPlayer(playersNumber);
                 break;
-            case "PvC": case "PVC": case "pvc":
-                humanNumber = playersNumber - 1;
+            case "pvc":
+                int humanNumber = playersNumber - 1;
                 createHumanPlayer(humanNumber);
                 int pileNumber = humanNumber;
                 createComputerPlayer(pileNumber);
+                break;
+            default:
+
         }     
     }
 
     private void dealCards(int playersNumber) {
-        this.piles = deal(playersNumber);
+        this.piles = deck.deal(playersNumber);
     }
 
 }
