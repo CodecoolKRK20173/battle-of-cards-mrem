@@ -17,6 +17,10 @@ public abstract class Player {
         return this.name;
     }
 
+    public Pile getCards() {
+        return this.cards;
+    }
+
     public int getNumOfCards() {
         return this.cards.getCardsNumber();
     }
