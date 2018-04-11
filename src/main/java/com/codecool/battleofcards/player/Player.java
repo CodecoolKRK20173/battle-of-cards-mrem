@@ -6,8 +6,9 @@ public abstract class Player {
     private String name;
     private Pile cards;
 
-    public Player(String name) {
+    public Player(String name, Pile cards) {
         this.name = name;
+        this.cards = cards;
     }
 
     abstract int getChoice();
