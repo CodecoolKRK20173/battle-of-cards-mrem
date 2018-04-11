@@ -1,3 +1,5 @@
+package com.codecool.battleofcards.card;
+
 public class CardAttribute {
     private final String LABEL;
     private final double VALUE;
@@ -11,7 +13,7 @@ public class CardAttribute {
         return this.LABEL;
     }
 
-    public String getValue() {
+    public double getValue() {
         return this.VALUE;
     }
 }

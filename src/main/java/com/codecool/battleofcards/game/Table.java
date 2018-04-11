@@ -38,7 +38,7 @@ public class Table {
 
         this.isRoundResolved = true;  // Let's assume it is and check this assumption below
         for (Card card : this.cards) {
-            if (this.cardComparator(this.winningCard, card) == 0 && this.winningCard != card) {
+            if (this.cardComparator.compare(this.winningCard, card) == 0 && this.winningCard != card) {
                 this.isRoundResolved = false;
                 this.cardsAfterDraw = this.cards;
                 break;

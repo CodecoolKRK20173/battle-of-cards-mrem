@@ -19,7 +19,7 @@ public class Card {
         return chooseAttribute(attributeNumber).getValue();
     }
 
-    public double getAttributeLabel(int attributeNumber) {
+    public String getAttributeLabel(int attributeNumber) {
         return chooseAttribute(attributeNumber).getLabel();
     }
 
@@ -38,6 +38,8 @@ public class Card {
             case 4:
                 choosedAttribute = this.fourthAttribute;
                 break;
+            default:
+                choosedAttribute = null;
         }
 
         return choosedAttribute;
@@ -53,6 +55,6 @@ public class Card {
                                                                            this.thirdAttribute.getLabel(),
                                                                            this.thirdAttribute.getValue(),
                                                                            this.fourthAttribute.getLabel(),
-                                                                           this.fourthAttribute).getValue();
+                                                                           this.fourthAttribute.getValue());
     }
 }
