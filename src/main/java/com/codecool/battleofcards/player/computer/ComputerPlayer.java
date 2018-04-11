@@ -12,5 +12,4 @@ public abstract class ComputerPlayer extends Player{
 
     public abstract int getChoice();
 
-    public abstract String chooseName();
 }
