@@ -2,6 +2,7 @@ package com.codecool.battleofcards.player.computer.hardai;
 
 import com.codecool.battleofcards.card.Card;
 import com.codecool.battleofcards.card.CardAttribute;
+import com.codecool.battleofcards.input.Input;
 import com.codecool.battleofcards.card.comparator.CardComparatorFactory;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,6 +16,7 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 import java.io.IOException;
 import java.util.Collections;
+
 
 public class KnowledgeBase{
 
@@ -75,7 +77,8 @@ public class KnowledgeBase{
 
 
     private List<Card> createCards(){
-        String[] statisticsList = readerFromFile().split("\n");
+        Input input = new Input();
+        String[] statisticsList = input.readerFromFile(FILESOURCE).split("\n");
         List<Card> cards = new ArrayList<>();
         for (String line : statisticsList){
             String[] cardStatistic = line.split(",");
@@ -109,23 +112,5 @@ public class KnowledgeBase{
                                     fourthAttribute));
                 }
         return cards;
-    }
-
-    public String readerFromFile() {
-        StringBuilder fileContent = new StringBuilder();
-
-        ClassLoader classLoader = getClass().getClassLoader();
-        Path filePath = Paths.get(classLoader.getResource(FILESOURCE).getFile());
-
-        try (Scanner reader = new Scanner(filePath)) {
-            while (reader.hasNextLine()) {
-                fileContent.append(reader.nextLine());
-                fileContent.append("\n");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return fileContent.toString();
     }
 }
