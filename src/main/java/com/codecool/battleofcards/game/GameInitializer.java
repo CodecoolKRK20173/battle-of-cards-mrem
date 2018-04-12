@@ -3,6 +3,7 @@ package com.codecool.battleofcards.game;
 import com.codecool.battleofcards.card.*;
 import com.codecool.battleofcards.display.*;
 import com.codecool.battleofcards.player.*;
+import com.codecool.battleofcards.player.computer.*;
 
 import java.util.*;
 
@@ -72,9 +73,8 @@ public class GameInitializer {
         String level = this.askLevel();
         switch(level) {
             case "n": 
-                // TODO check - compilation error
-                // computerPlayer = new NormalAI(piles.get(i));
-                //players.add(computerPlayer);
+                computerPlayer = new NormalAI(piles.get(i));
+                players.add(computerPlayer);
             case "h": 
                 // TODO check - compilation error
                 // computerPlayer = new HardAI(piles.get(i));
