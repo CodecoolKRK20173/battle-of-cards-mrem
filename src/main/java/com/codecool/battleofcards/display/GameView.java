@@ -86,6 +86,11 @@ public class GameView {
         }
         System.out.println(names);
         System.out.println();
+
+    public void displayPlayerDecision(Player player, String attributeLabel) {
+        String playerDecision = String.format("%s choosed %s", player.getName(),
+                                                               attributeLabel.toLowerCase());
+        displayLine(playerDecision);
     }
 
     public String centeredString(String text) {
