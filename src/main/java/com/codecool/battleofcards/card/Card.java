@@ -61,4 +61,28 @@ public class Card {
                                                                            this.FOURTH_ATTRIBUTE.getAnnotatedLabel(),
                                                                            this.FOURTH_ATTRIBUTE.getValue());
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Card other = (Card) obj;
+         if (!this.NAME.equals(other.NAME))
+            return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        final int PRIME = 31;
+        int result = 1;
+        result = PRIME * result + ((NAME == null) ? 0 : NAME.hashCode());
+        return result;
+    }
+
+
 }
