@@ -2,9 +2,11 @@ package com.codecool.battleofcards.game;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Comparator;
 
 import com.codecool.battleofcards.card.Card;
-import com.codecool.battleofcards.card.comparators.*;
+import com.codecool.battleofcards.card.comparator.*;
 
 public class Table {
     private List<Card> cards;
@@ -18,7 +20,8 @@ public class Table {
     public Table() {
         this.cards = new ArrayList<>();
         this.cardsAfterDraw = new ArrayList<>();
-        this.cardComparator = new Comparator();
+        // TODO check - compilation error
+        //this.cardComparator = new Comparator();
     }
 
     public void setCards(List<Card> cards) {
@@ -33,7 +36,9 @@ public class Table {
         this.cardComparator = cardComparator;
     }
 
-    public void resolveRound() {
+    public void resolveRound(List<Card> roundCards) {
+        this.setCards(roundCards);
+
         this.winningCard = Collections.max(this.cards, this.cardComparator);
 
         this.isRoundResolved = true;  // Let's assume it is and check this assumption below
@@ -46,13 +51,21 @@ public class Table {
         }
     }
 
+    public boolean isRoundResolved() {
+        return this.isRoundResolved;
+    }
+
     public Card getWinningCard() {
         if (this.isRoundResolved) {
             return this.winningCard;
         }
+        // TODO check - compilation error
+        return null;
     }
 
     public List<Card> getRoundTrophy() {
-        return this.cards.addAll(this.cardsAfterDraw);
+        // TODO check - compilation error
+        this.cards.addAll(this.cardsAfterDraw);
+        return this.cards;
     }
 }
