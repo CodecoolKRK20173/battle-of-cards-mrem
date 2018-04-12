@@ -43,8 +43,9 @@ public class Deck implements Shuffleable{
                                         secondAttribute,
                                         thirdAttribute,
                                         fourthAttribute));
-            }
         }
+        shuffle();
+    }
 
     public void shuffle(){
         Collections.shuffle(this.cards);
