@@ -11,7 +11,8 @@ public class HumanPlayer extends Player {
     
     @Override
     public int getChoice() {
-        try (Scanner reader = new Scanner(System.in)) {
+        try {
+            Scanner reader = new Scanner(System.in);
             int userChoice = Integer.parseInt(reader.nextLine());
             if (userChoice < 1 || userChoice > 4) {
                 throw new InputMismatchException("It's not a valid number");
