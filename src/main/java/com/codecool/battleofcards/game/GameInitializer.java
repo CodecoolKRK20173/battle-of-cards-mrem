@@ -24,6 +24,7 @@ public class GameInitializer {
     }
 
     public Game initializeGame() {
+        this.view.displayFirstScreen();
         this.view.clearScreen();
         this.playersNumber = this.askNumberOfPlayers();
         this.createDeck();

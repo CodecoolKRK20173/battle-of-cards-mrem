@@ -35,7 +35,7 @@ public class Game {
         while (this.isActive) {
             gameView.clearScreen();
             handleRound();
-            waitForAction();
+            this.gameView.waitForAction();
         }
     }
 
@@ -112,9 +112,5 @@ public class Game {
         return null;
     }
 
-    private void waitForAction() {
-        this.gameView.displayInputPrompt("Press enter to continue");
-        Scanner reader = new Scanner(System.in);
-        reader.nextLine();
-    }
+    
 }
