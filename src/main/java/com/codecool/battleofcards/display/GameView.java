@@ -124,5 +124,9 @@ public class GameView {
         waitForAction();
     }
 
-
+    public void displayEndGame(Player player) {
+        displayLine("GAME ENDED");
+        displayLine(String.format("The winner is %s with %d cards", player.getName(),
+                                                                    player.getNumOfCards()));
+    }
 }

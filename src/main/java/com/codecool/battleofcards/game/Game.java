@@ -5,9 +5,7 @@ import com.codecool.battleofcards.card.comparator.CardComparatorFactory;
 import com.codecool.battleofcards.player.*;
 import com.codecool.battleofcards.display.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
     private final GameView gameView;
@@ -78,6 +76,9 @@ public class Game {
         showCards(roundCards);
 
         checkIfWon();
+        if (!isActive) {
+            this.gameView.displayEndGame(this.getWinner());
+        }
     }
 
     private int getChoiceFromActivePlayer() {
@@ -122,5 +123,8 @@ public class Game {
         return null;
     }
 
-    
+    private Player getWinner() {
+        Comparator<Player> numOfCardComparator = Comparator.comparing(Player::getNumOfCards);
+        return Collections.max(this.players, numOfCardComparator);
+    }
 }
