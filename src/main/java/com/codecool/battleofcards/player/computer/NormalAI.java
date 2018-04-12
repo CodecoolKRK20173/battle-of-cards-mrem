@@ -6,29 +6,25 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class NormalAI extends ComputerPlayer{
+public class NormalAI extends ComputerPlayer {
+    private static List<String> normalAINames;
+    private static Random generator;
+    private static final int CARD_STATS_NUM;
 
-    private static List<String> normalAINames = new ArrayList(Arrays.asList("Average Joe",
-                            "No BrAIn",
-                            "John Doe"));
-
-    private static Random generator = new Random();
-    private static final int CARD_STATS_NUM = 4;
-
-
-    public NormalAI(Pile cards){
-
-        super(normalAINames.remove(0), cards);
-
+    static {
+        normalAINames = new ArrayList<>(Arrays.asList("Average Joe",
+                                                      "No BrAIn",
+                                                      "John Doe"));
+        generator = new Random();
+        CARD_STATS_NUM = 4;
     }
 
+    public NormalAI(Pile cards) {
+        super(normalAINames.remove(0), cards);
+    }
 
     @Override
-    public int getChoice(){
-
+    public int getChoice() {
         return generator.nextInt(CARD_STATS_NUM) + 1;
-
     }
-
-
 }
