@@ -69,13 +69,13 @@ public class Deck implements Shuffleable{
     public String readerFromFile(String filename) {
         StringBuilder fileContent = new StringBuilder();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
-            String line = reader.readLine();
-            while (line != null) {
-                fileContent.append(line);
-                fileContent.append("\n");
+        ClassLoader classLoader = getClass().getClassLoader();
+        Path filePath = Paths.get(classLoader.getResource(filename).getFile());
 
-                line = reader.readLine();      
+        try (Scanner reader = new Scanner(filePath)) {
+            while (reader.hasNextLine()) {
+                fileContent.append(reader.nextLine());
+                fileContent.append("\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
