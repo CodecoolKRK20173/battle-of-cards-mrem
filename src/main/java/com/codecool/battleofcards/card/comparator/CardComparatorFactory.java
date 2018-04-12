@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Comparator;
 
 public class CardComparatorFactory {
-    Map<Integer, Comparator<Card>> comparators;
+    private final Map<Integer, Comparator<Card>> comparators;
 
     public CardComparatorFactory() {
         this.comparators = new HashMap<>();
