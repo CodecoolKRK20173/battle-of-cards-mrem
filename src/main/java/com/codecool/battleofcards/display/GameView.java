@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Scanner;
 import com.codecool.battleofcards.card.Card;
 import com.codecool.battleofcards.player.*;
-import com.codecool.battleofcards.input.*;
+import com.codecool.battleofcards.reader.*;
 
 public class GameView {
-    Input input = new Input();
+    FileReader fileReader = new FileReader();
 
     public void displayLine(String lineContent) {
         System.out.println(lineContent);
@@ -120,7 +120,7 @@ public class GameView {
 
     public void displayFirstScreen() {
         clearScreen();
-        displayLine(input.readerFromFile("start_screen.txt"));
+        displayLine(fileReader.readerFromFile("start_screen.txt"));
         waitForAction();
     }
 
