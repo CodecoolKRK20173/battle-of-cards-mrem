@@ -1,13 +1,16 @@
 package com.codecool.battleofcards.card;
 
-import com.codecool.battleofcards.input.Input;
+import com.codecool.battleofcards.reader.*;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class Deck implements Shuffleable {
     private List<Card> cards;
-    Input input = new Input();
+    FileReader fileReader = new FileReader();
 
     public Deck(String filename){
         this.cards = new ArrayList<>();
@@ -15,7 +18,7 @@ public class Deck implements Shuffleable {
     }
 
     private void createCards(String filename){
-        String[] statisticsList = input.readerFromFile(filename).split("\n");
+        String[] statisticsList = fileReader.readerFromFile(filename).split("\n");
         
         for (String line : statisticsList){
             String[] cardStatistic = line.split(",");

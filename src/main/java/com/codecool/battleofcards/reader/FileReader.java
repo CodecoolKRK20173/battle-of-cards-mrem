@@ -1,11 +1,11 @@
-package com.codecool.battleofcards.input;
+package com.codecool.battleofcards.reader;
 
 import java.util.Scanner;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class Input {
+public class FileReader {
     public String readerFromFile(String filename) {
         StringBuilder fileContent = new StringBuilder();
 
