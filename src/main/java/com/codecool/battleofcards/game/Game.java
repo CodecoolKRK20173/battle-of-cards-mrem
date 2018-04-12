@@ -59,9 +59,11 @@ public class Game {
             roundCards.add(player.getCards().peekTopCard());
         }
 
+        // Player decision is displayed
+        this.gameView.displayPlayerDecision(this.activePlayer, activePlayerTopCard.getAttributeLabel(playerChoice));
+
         // Round is being resolved
         table.resolveRound(roundCards);
-        this.gameView.displayLine(this.activePlayer.getName() + " choosed: " + activePlayerTopCard.getAttributeLabel(playerChoice));
         if (table.isRoundResolved()) {
             Player winner = findWinningCardOwner();
             takePlayersTopCards();
@@ -73,7 +75,7 @@ public class Game {
         }
 
         // Players top cards are showed
-        gameView.displayHeader(this.players);
+        this.gameView.displayHeader(this.players);
         showCards(roundCards);
 
         checkIfWon();
