@@ -2,7 +2,7 @@ package com.codecool.battleofcards.player.computer.hardai;
 
 import com.codecool.battleofcards.card.Card;
 import com.codecool.battleofcards.card.CardAttribute;
-import com.codecool.battleofcards.input.Input;
+import com.codecool.battleofcards.reader.FileReader;
 import com.codecool.battleofcards.card.comparator.CardComparatorFactory;
 import java.util.HashMap;
 import java.util.Map;
@@ -77,8 +77,8 @@ public class KnowledgeBase{
 
 
     private List<Card> createCards(){
-        Input input = new Input();
-        String[] statisticsList = input.readerFromFile(FILESOURCE).split("\n");
+        FileReader fileReader = new FileReader();
+        String[] statisticsList = fileReader.readerFromFile(FILESOURCE).split("\n");
         List<Card> cards = new ArrayList<>();
         for (String line : statisticsList){
             String[] cardStatistic = line.split(",");
