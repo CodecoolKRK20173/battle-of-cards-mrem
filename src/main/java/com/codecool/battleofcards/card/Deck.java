@@ -1,14 +1,10 @@
 package com.codecool.battleofcards.card;
 
-<<<<<<< HEAD
 import com.codecool.battleofcards.reader.*;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-=======
-import com.codecool.battleofcards.input.Input;
 import java.util.List;
->>>>>>> dev
 import java.util.ArrayList;
 import java.util.Collections;
 
