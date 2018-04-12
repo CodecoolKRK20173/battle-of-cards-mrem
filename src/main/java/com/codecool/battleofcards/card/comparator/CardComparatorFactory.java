@@ -2,21 +2,21 @@ package com.codecool.battleofcards.card.comparator;
 
 import com.codecool.battleofcards.card.Card;
 
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.Comparator;
-import java.util.List;
 
 public class CardComparatorFactory {
-    List<Comparator<Card>> comparators = new ArrayList<>();
+    private final Map<Integer, Comparator<Card>> comparators;
 
     public CardComparatorFactory() {
-        this.comparators.add(new CardFirstAttributeComparator());
-        this.comparators.add(new CardSecondAttributeComparator());
-        this.comparators.add(new CardThirdAttributeComparator());
-        this.comparators.add(new CardFourthAttributeComparator());
+        this.comparators = new HashMap<>();
     }
 
     public Comparator<Card> getCardComparator(int attributeNumber) {
-        return this.comparators.get(attributeNumber - 1);
+        if (!this.comparators.containsKey(attributeNumber)) {
+            this.comparators.put(attributeNumber, new CardComparator(attributeNumber));
+        }
+        return this.comparators.get(attributeNumber);
     }
 }
