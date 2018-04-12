@@ -44,8 +44,24 @@ public class GameInitializer {
     }
 
     private int askNumberOfPlayers() {
-        view.displayInputPrompt("Select players number (between 2 and 4)?");
-        return (int) Integer.parseInt(input.nextLine());
+        while (true) {
+            try {
+                view.displayInputPrompt("Select players number (between 2 and 4)?");
+                return getChoice();
+            } catch (IllegalArgumentException e) {
+                view.displayLine("It's not a valid number");
+            }
+        }
+    }
+
+    public int getChoice() {
+        Scanner reader = new Scanner(System.in);
+        int userChoice = Integer.parseInt(reader.nextLine());
+
+        if (userChoice < 2 || userChoice > 4) {
+            throw new IllegalArgumentException("It's not a valid number");
+        }
+        return userChoice;
     }
 
     private String askForName() {
