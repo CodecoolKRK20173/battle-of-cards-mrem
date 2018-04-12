@@ -10,13 +10,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Game {
-    private GameView gameView;
+    private final GameView gameView;
 
-    private List<Player> players;
+    private final List<Player> players;
     private Player activePlayer;
 
-    private CardComparatorFactory cardComparators;
-    private Table table;
+    private final CardComparatorFactory cardComparators;
+    private final Table table;
 
     private boolean isActive;
 
