@@ -20,8 +20,6 @@ public class Table {
     public Table() {
         this.cards = new ArrayList<>();
         this.cardsAfterDraw = new ArrayList<>();
-        // TODO check - compilation error
-        //this.cardComparator = new Comparator();
     }
 
     public void setCards(List<Card> cards) {
@@ -38,7 +36,6 @@ public class Table {
 
     public void resolveRound(List<Card> roundCards) {
         this.setCards(roundCards);
-
         this.winningCard = Collections.max(this.cards, this.cardComparator);
 
         this.isRoundResolved = true;  // Let's assume it is and check this assumption below
@@ -59,12 +56,10 @@ public class Table {
         if (this.isRoundResolved) {
             return this.winningCard;
         }
-        // TODO check - compilation error
         return null;
     }
 
     public List<Card> getRoundTrophy() {
-        // TODO check - compilation error
         this.cards.addAll(this.cardsAfterDraw);
         return this.cards;
     }
