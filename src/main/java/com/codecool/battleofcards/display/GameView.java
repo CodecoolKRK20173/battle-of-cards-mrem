@@ -11,6 +11,10 @@ public class GameView {
         System.out.println(lineContent);
     }
 
+    public void displayBlock(StringBuilder block) {
+        displayLine(block.toString());
+    }
+
     public void displayEmptyLine() {
         System.out.println();
     }
@@ -22,7 +26,7 @@ public class GameView {
     }
 
     public void displayInputPrompt(String inputPrompt) {
-        System.out.print(inputPrompt + ": ");
+        displayInline(inputPrompt + ": ");
     }
 
     public void displayInline(String text) {
@@ -30,7 +34,7 @@ public class GameView {
     }
 
     public void clearScreen() {
-        System.out.print("\033[H\033[2J");
+        displayLine("\033[H\033[2J");
     }
 
     public void displayCard(Card card) {
@@ -49,7 +53,7 @@ public class GameView {
             cardToPrint.append("\n");
         }
 
-        System.out.println(cardToPrint.toString());
+        displayBlock(cardToPrint);
     }
 
     public void displayTable(List<Card> cards) {
@@ -75,7 +79,7 @@ public class GameView {
             table.append("\n");
         }
 
-        System.out.println(table.toString());
+        displayBlock(table);
     }
 
     public void displayHeader(List<Player> players) {
@@ -84,8 +88,14 @@ public class GameView {
         for(Player player : players) {
             names.append(centeredString(player.getName()+ " - Cards left: " + player.getNumOfCards()) + " ");          
         }
-        System.out.println(names);
-        System.out.println();
+        displayBlock(names);
+        displayEmptyLine();
+    }
+
+    public void displayPlayerDecision(Player player, String attributeLabel) {
+        String playerDecision = String.format("%s choosed %s", player.getName(),
+                                                               attributeLabel.toLowerCase());
+        displayLine(playerDecision);
     }
 
     public String centeredString(String text) {

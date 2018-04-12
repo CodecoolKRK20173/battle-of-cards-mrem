@@ -52,13 +52,13 @@ public class Card {
     @Override
     public String toString() {
         return String.format("%s\n%s: %.2f\n%s: %.2f\n%s: %.2f\n%s: %.2f", this.NAME,
-                                                                           this.FIRST_ATTRIBUTE.getLabel(),
+                                                                           this.FIRST_ATTRIBUTE.getAnnotatedLabel(),
                                                                            this.FIRST_ATTRIBUTE.getValue(),
-                                                                           this.SECOND_ATTRIBUTE.getLabel(),
+                                                                           this.SECOND_ATTRIBUTE.getAnnotatedLabel(),
                                                                            this.SECOND_ATTRIBUTE.getValue(),
-                                                                           this.THIRD_ATTRIBUTE.getLabel(),
+                                                                           this.THIRD_ATTRIBUTE.getAnnotatedLabel(),
                                                                            this.THIRD_ATTRIBUTE.getValue(),
-                                                                           this.FOURTH_ATTRIBUTE.getLabel(),
+                                                                           this.FOURTH_ATTRIBUTE.getAnnotatedLabel(),
                                                                            this.FOURTH_ATTRIBUTE.getValue());
     }
 }

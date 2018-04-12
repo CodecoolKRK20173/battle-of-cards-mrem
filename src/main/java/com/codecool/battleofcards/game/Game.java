@@ -10,13 +10,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Game {
-    private GameView gameView;
+    private final GameView gameView;
 
-    private List<Player> players;
+    private final List<Player> players;
     private Player activePlayer;
 
-    private CardComparatorFactory cardComparators;
-    private Table table;
+    private final CardComparatorFactory cardComparators;
+    private final Table table;
 
     private boolean isActive;
 
@@ -59,6 +59,9 @@ public class Game {
             roundCards.add(player.getCards().peekTopCard());
         }
 
+        // Player decision is displayed
+        this.gameView.displayPlayerDecision(this.activePlayer, activePlayerTopCard.getAttributeLabel(playerChoice));
+
         // Round is being resolved
         table.resolveRound(roundCards);
         if (table.isRoundResolved()) {
@@ -72,7 +75,7 @@ public class Game {
         }
 
         // Players top cards are showed
-        gameView.displayHeader(this.players);
+        this.gameView.displayHeader(this.players);
         showCards(roundCards);
 
         checkIfWon();
