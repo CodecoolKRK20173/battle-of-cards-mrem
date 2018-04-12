@@ -1,13 +1,20 @@
 package com.codecool.battleofcards.card;
 
-import java.util.*;
-import java.io.*;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
 
 public class Deck implements Shuffleable{
 
     private List<Card> cards;
 
     public Deck(String filename){
+        this.cards = new ArrayList<>();
         createCards(filename);
     }
 
@@ -44,7 +51,7 @@ public class Deck implements Shuffleable{
     }
 
     public List<Pile> deal(int numOfPlayers) {
-        List<Pile> piles = new ArrayList<Pile>();
+        List<Pile> piles = new ArrayList<>();
 
         int playerPileSize = this.cards.size() / numOfPlayers;
         int nextPileStartPos = 0;
