@@ -8,8 +8,8 @@ import java.util.List;
 public class Pile implements Comparable<Pile> {
     private LinkedList<Card> cards;
     
-    Pile(List<Card> cards) {
-        this.cards = new LinkedList<Card>(cards);
+    public Pile(List<Card> cards) {
+        this.cards = new LinkedList<>(cards);
     }
 
     public int getCardsNumber() {
