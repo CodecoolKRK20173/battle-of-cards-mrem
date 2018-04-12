@@ -15,6 +15,10 @@ public class Card {
         this.fourthAttribute = cardAttributes[3];
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public double getAttributeValue(int attributeNumber) {
         return chooseAttribute(attributeNumber).getValue();
     }
