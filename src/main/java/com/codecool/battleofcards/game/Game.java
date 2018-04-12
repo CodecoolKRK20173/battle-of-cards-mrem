@@ -59,10 +59,6 @@ public class Game {
             roundCards.add(player.getCards().peekTopCard());
         }
 
-        // Players top cards are showed
-        gameView.displayPlayersName(this.players);
-        showCards(roundCards);
-
         // Round is being resolved
         table.resolveRound(roundCards);
         if (table.isRoundResolved()) {
@@ -71,8 +67,13 @@ public class Game {
             winner.addCards(table.getRoundTrophy());
             this.gameView.displayLine(String.format("Winning card is %s, so the winner is %s", table.getWinningCard().getName(),
                                                                                                winner.getName()));
+            this.gameView.displayEmptyLine();
             this.activePlayer = winner;
         }
+
+        // Players top cards are showed
+        gameView.displayPlayersName(this.players);
+        showCards(roundCards);
 
         checkIfWon();
     }
