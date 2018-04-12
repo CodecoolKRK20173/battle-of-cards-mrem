@@ -1,22 +1,22 @@
 package com.codecool.battleofcards.card;
 
 public class Card {
-    private String name;
-    private CardAttribute firstAttribute;
-    private CardAttribute secondAttribute;
-    private CardAttribute thirdAttribute;
-    private CardAttribute fourthAttribute;
+    private final String NAME;
+    private final CardAttribute FIRST_ATTRIBUTE;
+    private final CardAttribute SECOND_ATTRIBUTE;
+    private final CardAttribute THIRD_ATTRIBUTE;
+    private final CardAttribute FOURTH_ATTRIBUTE;
 
     public Card(String name, CardAttribute... cardAttributes) {
-        this.name = name;
-        this.firstAttribute = cardAttributes[0];
-        this.secondAttribute = cardAttributes[1];
-        this.thirdAttribute = cardAttributes[2];
-        this.fourthAttribute = cardAttributes[3];
+        this.NAME = name;
+        this.FIRST_ATTRIBUTE = cardAttributes[0];
+        this.SECOND_ATTRIBUTE = cardAttributes[1];
+        this.THIRD_ATTRIBUTE = cardAttributes[2];
+        this.FOURTH_ATTRIBUTE = cardAttributes[3];
     }
 
     public String getName() {
-        return this.name;
+        return this.NAME;
     }
 
     public double getAttributeValue(int attributeNumber) {
@@ -31,16 +31,16 @@ public class Card {
         CardAttribute choosedAttribute;
         switch (attributeNumber) {
             case 1:
-                choosedAttribute = this.firstAttribute;
+                choosedAttribute = this.FIRST_ATTRIBUTE;
                 break;
             case 2:
-                choosedAttribute = this.secondAttribute;
+                choosedAttribute = this.SECOND_ATTRIBUTE;
                 break;
             case 3:
-                choosedAttribute = this.thirdAttribute;
+                choosedAttribute = this.THIRD_ATTRIBUTE;
                 break;
             case 4:
-                choosedAttribute = this.fourthAttribute;
+                choosedAttribute = this.FOURTH_ATTRIBUTE;
                 break;
             default:
                 choosedAttribute = null;
@@ -51,14 +51,14 @@ public class Card {
 
     @Override
     public String toString() {
-        return String.format("%s\n%s: %.2f\n%s: %.2f\n%s: %.2f\n%s: %.2f", this.name,
-                                                                           this.firstAttribute.getLabel(),
-                                                                           this.firstAttribute.getValue(),
-                                                                           this.secondAttribute.getLabel(),
-                                                                           this.secondAttribute.getValue(),
-                                                                           this.thirdAttribute.getLabel(),
-                                                                           this.thirdAttribute.getValue(),
-                                                                           this.fourthAttribute.getLabel(),
-                                                                           this.fourthAttribute.getValue());
+        return String.format("%s\n%s: %.2f\n%s: %.2f\n%s: %.2f\n%s: %.2f", this.NAME,
+                                                                           this.FIRST_ATTRIBUTE.getLabel(),
+                                                                           this.FIRST_ATTRIBUTE.getValue(),
+                                                                           this.SECOND_ATTRIBUTE.getLabel(),
+                                                                           this.SECOND_ATTRIBUTE.getValue(),
+                                                                           this.THIRD_ATTRIBUTE.getLabel(),
+                                                                           this.THIRD_ATTRIBUTE.getValue(),
+                                                                           this.FOURTH_ATTRIBUTE.getLabel(),
+                                                                           this.FOURTH_ATTRIBUTE.getValue());
     }
 }
