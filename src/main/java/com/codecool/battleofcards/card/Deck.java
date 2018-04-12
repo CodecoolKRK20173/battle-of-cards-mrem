@@ -1,6 +1,5 @@
 package com.codecool.battleofcards.card;
 
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -9,8 +8,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-public class Deck implements Shuffleable{
-
+public class Deck implements Shuffleable {
     private List<Card> cards;
 
     public Deck(String filename){
@@ -44,7 +42,6 @@ public class Deck implements Shuffleable{
                                         thirdAttribute,
                                         fourthAttribute));
         }
-        shuffle();
     }
 
     public void shuffle(){
