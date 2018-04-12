@@ -78,7 +78,7 @@ public class GameView {
         System.out.println(table.toString());
     }
 
-    public void displayPlayersName(List<Player> players) {
+    public void displayHeader(List<Player> players) {
         StringBuilder names = new StringBuilder();
         names.append("  ");
         for(Player player : players) {

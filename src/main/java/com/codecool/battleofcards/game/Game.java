@@ -72,7 +72,7 @@ public class Game {
         }
 
         // Players top cards are showed
-        gameView.displayPlayersName(this.players);
+        gameView.displayHeader(this.players);
         showCards(roundCards);
 
         checkIfWon();
