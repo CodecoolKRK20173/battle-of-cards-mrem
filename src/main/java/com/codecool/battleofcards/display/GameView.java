@@ -82,7 +82,7 @@ public class GameView {
         StringBuilder names = new StringBuilder();
         names.append("  ");
         for(Player player : players) {
-            names.append(centeredString(player.getName()) + " ");          
+            names.append(centeredString(player.getName()+ " - Cards left: " + player.getNumOfCards()) + " ");          
         }
         System.out.println(names);
         System.out.println();
