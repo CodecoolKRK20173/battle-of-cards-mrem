@@ -1,11 +1,13 @@
 package com.codecool.battleofcards.game;
 
 import com.codecool.battleofcards.card.*;
-import com.codecool.battleofcards.display.*;
+import com.codecool.battleofcards.display.GameView;
 import com.codecool.battleofcards.player.*;
 import com.codecool.battleofcards.player.computer.*;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class GameInitializer {
     private final String FILE_NAME;
@@ -24,6 +26,7 @@ public class GameInitializer {
     }
 
     public Game initializeGame() {
+        this.view.displayFirstScreen();
         this.view.clearScreen();
         this.playersNumber = this.askNumberOfPlayers();
         this.createDeck();
@@ -39,13 +42,29 @@ public class GameInitializer {
     }
 
     private String askGameMode() {
-        view.displayInputPrompt("Choose game mode (PvP or PvC)");
+        view.displayInputPrompt("Choose game mode [PvP/PvC]");
         return input.nextLine().toLowerCase();
     }
 
     private int askNumberOfPlayers() {
-        view.displayInputPrompt("Select players number (between 2 and 4)?");
-        return (int) Integer.parseInt(input.nextLine());
+        while (true) {
+            try {
+                view.displayInputPrompt("Select players number [2-4]");
+                return getChoice();
+            } catch (IllegalArgumentException e) {
+                view.displayLine("It's not a valid number");
+            }
+        }
+    }
+
+    public int getChoice() {
+        Scanner reader = new Scanner(System.in);
+        int userChoice = Integer.parseInt(reader.nextLine());
+
+        if (userChoice < 2 || userChoice > 4) {
+            throw new IllegalArgumentException("It's not a valid number");
+        }
+        return userChoice;
     }
 
     private String askForName() {

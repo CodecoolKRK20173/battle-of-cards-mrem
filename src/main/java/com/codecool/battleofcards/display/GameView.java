@@ -3,10 +3,14 @@ package com.codecool.battleofcards.display;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import com.codecool.battleofcards.card.Card;
 import com.codecool.battleofcards.player.*;
+import com.codecool.battleofcards.input.Input;
 
 public class GameView {
+    Input input = new Input();
+
     public void displayLine(String lineContent) {
         System.out.println(lineContent);
     }
@@ -106,5 +110,23 @@ public class GameView {
         text = String.format("%-" + widthColumn  + "s", text);
 
         return text;
+    }
+
+    public void waitForAction() {
+        displayInputPrompt("Press enter to continue");
+        Scanner reader = new Scanner(System.in);
+        reader.nextLine();
+    }
+
+    public void displayFirstScreen() {
+        clearScreen();
+        displayLine(input.readerFromFile("start_screen.txt"));
+        waitForAction();
+    }
+
+    public void displayEndGame(Player player) {
+        displayLine("GAME ENDED");
+        displayLine(String.format("The winner is %s with %d cards", player.getName(),
+                                                                    player.getNumOfCards()));
     }
 }

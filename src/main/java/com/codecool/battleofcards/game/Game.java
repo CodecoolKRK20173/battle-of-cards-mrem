@@ -3,11 +3,9 @@ package com.codecool.battleofcards.game;
 import com.codecool.battleofcards.card.Card;
 import com.codecool.battleofcards.card.comparator.CardComparatorFactory;
 import com.codecool.battleofcards.player.*;
-import com.codecool.battleofcards.display.*;
+import com.codecool.battleofcards.display.GameView;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
     private final GameView gameView;
@@ -35,7 +33,7 @@ public class Game {
         while (this.isActive) {
             gameView.clearScreen();
             handleRound();
-            waitForAction();
+            this.gameView.waitForAction();
         }
     }
 
@@ -48,8 +46,7 @@ public class Game {
         this.gameView.displayEmptyLine();
 
         // Active player chooses comparison attribute
-        this.gameView.displayInputPrompt("Select comparison attribute");
-        int playerChoice = this.activePlayer.getChoice();
+        int playerChoice = getChoiceFromActivePlayer();
         table.setCardComparator(cardComparators.getCardComparator(playerChoice));
         this.gameView.clearScreen();
 
@@ -79,6 +76,20 @@ public class Game {
         showCards(roundCards);
 
         checkIfWon();
+        if (!isActive) {
+            this.gameView.displayEndGame(this.getWinner());
+        }
+    }
+
+    private int getChoiceFromActivePlayer() {
+        while (true) {
+            try {
+                this.gameView.displayInputPrompt("Select comparison attribute");
+                return this.activePlayer.getChoice();
+            } catch (IllegalArgumentException e) {
+                this.gameView.displayLine("It's not a valid number");
+            }
+        }
     }
 
     private void takePlayersTopCards() {
@@ -112,9 +123,8 @@ public class Game {
         return null;
     }
 
-    private void waitForAction() {
-        this.gameView.displayInputPrompt("Press enter to continue");
-        Scanner reader = new Scanner(System.in);
-        reader.nextLine();
+    private Player getWinner() {
+        Comparator<Player> numOfCardComparator = Comparator.comparing(Player::getNumOfCards);
+        return Collections.max(this.players, numOfCardComparator);
     }
 }
