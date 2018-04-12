@@ -61,7 +61,7 @@ public class Game {
 
         // Round is being resolved
         table.resolveRound(roundCards);
-        this.gameView.displayLine(this.activePlayer.getName() + " choosed: " + this.activePlayer.getCards().peekTopCard().getAttributeLabel(playerChoice));
+        this.gameView.displayLine(this.activePlayer.getName() + " choosed: " + activePlayerTopCard.getAttributeLabel(playerChoice));
         if (table.isRoundResolved()) {
             Player winner = findWinningCardOwner();
             takePlayersTopCards();
