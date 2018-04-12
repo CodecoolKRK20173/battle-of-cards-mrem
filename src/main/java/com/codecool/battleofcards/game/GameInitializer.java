@@ -27,6 +27,7 @@ public class GameInitializer {
         this.view.clearScreen();
         this.playersNumber = this.askNumberOfPlayers();
         this.createDeck();
+        this.shuffleCards();
         this.dealCards();
         this.createPlayers();
 
@@ -111,8 +112,11 @@ public class GameInitializer {
         }
     }
 
+    private void shuffleCards() {
+        this.deck.shuffle();
+    }
+
     private void dealCards() {
         this.piles = this.deck.deal(playersNumber);
     }
-
 }
