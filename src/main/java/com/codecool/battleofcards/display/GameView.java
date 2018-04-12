@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 import com.codecool.battleofcards.card.Card;
 import com.codecool.battleofcards.player.*;
-import com.codecool.battleofcards.input.*;
+import com.codecool.battleofcards.input.Input;
 
 public class GameView {
     Input input = new Input();

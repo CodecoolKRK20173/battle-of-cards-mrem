@@ -1,13 +1,9 @@
 package com.codecool.battleofcards.card;
 
-import com.codecool.battleofcards.input.*;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import com.codecool.battleofcards.input.Input;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
 
 public class Deck implements Shuffleable {
     private List<Card> cards;
