@@ -60,6 +60,7 @@ public class Game {
         }
 
         // Players top cards are showed
+        gameView.displayPlayersName(this.players);
         showCards(roundCards);
 
         // Round is being resolved

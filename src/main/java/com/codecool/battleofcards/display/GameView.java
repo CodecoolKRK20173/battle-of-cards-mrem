@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import com.codecool.battleofcards.card.Card;
+import com.codecool.battleofcards.player.*;
 
 public class GameView {
     public void displayLine(String lineContent) {
@@ -75,6 +76,16 @@ public class GameView {
         }
 
         System.out.println(table.toString());
+    }
+
+    public void displayPlayersName(List<Player> players) {
+        StringBuilder names = new StringBuilder();
+        names.append("  ");
+        for(Player player : players) {
+            names.append(centeredString(player.getName()) + " ");          
+        }
+        System.out.println(names);
+        System.out.println();
     }
 
     public String centeredString(String text) {
