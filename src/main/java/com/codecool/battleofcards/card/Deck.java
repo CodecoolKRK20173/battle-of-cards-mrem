@@ -25,16 +25,24 @@ public class Deck implements Shuffleable {
                 String name = cardStatistic[0];
 
                 double firstValue = Double.valueOf(cardStatistic[1]);
-                CardAttribute firstAttribute = new CardAttribute("Density (people/km^2)", firstValue);
+                CardAttribute firstAttribute = new CardAttribute("Population density",
+                                                                 "Density (people/km^2)",
+                                                                 firstValue);
 
                 double secondValue = Double.valueOf(cardStatistic[2]);
-                CardAttribute secondAttribute = new CardAttribute("Population (mln)", secondValue);
+                CardAttribute secondAttribute = new CardAttribute("Population size",
+                                                                  "Population (mln)",
+                                                                  secondValue);
                 
                 double thirdValue = Double.valueOf(cardStatistic[3]);
-                CardAttribute thirdAttribute = new CardAttribute("GDP (bln €)", thirdValue);
+                CardAttribute thirdAttribute = new CardAttribute("Gross Domestic Product",
+                                                                 "GDP (bln €)",
+                                                                 thirdValue);
 
                 double fourthValue = Double.valueOf(cardStatistic[4]);
-                CardAttribute fourthAttribute = new CardAttribute("Area (km^2)", fourthValue);
+                CardAttribute fourthAttribute = new CardAttribute("Country's area",
+                                                                  "Area (km^2)",
+                                                                  fourthValue);
 
                 this.cards.add(new Card(name,
                                         firstAttribute,
