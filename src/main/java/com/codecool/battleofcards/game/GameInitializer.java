@@ -96,6 +96,7 @@ public class GameInitializer {
             case "n":
                 computerPlayer = new NormalAI(piles.get(i));
                 players.add(computerPlayer);
+                break;
             case "h":
                 computerPlayer = new HardAI(piles.get(i));
                 players.add(computerPlayer);
