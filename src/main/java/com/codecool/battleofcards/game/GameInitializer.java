@@ -4,6 +4,7 @@ import com.codecool.battleofcards.card.*;
 import com.codecool.battleofcards.display.GameView;
 import com.codecool.battleofcards.player.*;
 import com.codecool.battleofcards.player.computer.*;
+import com.codecool.battleofcards.player.computer.hardai.HardAI;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class GameInitializer {
 
     private GameView view = new GameView();
     private Scanner input;
-    
+
 
     public GameInitializer(String fileName) {
         FILE_NAME = fileName;
@@ -92,16 +93,15 @@ public class GameInitializer {
         Player computerPlayer;
         String level = this.askLevel();
         switch(level) {
-            case "n": 
+            case "n":
                 computerPlayer = new NormalAI(piles.get(i));
                 players.add(computerPlayer);
-            case "h": 
-                // TODO check - compilation error
-                // computerPlayer = new HardAI(piles.get(i));
-                // players.add(computerPlayer);
-        }   
+            case "h":
+                computerPlayer = new HardAI(piles.get(i));
+                players.add(computerPlayer);
+        }
     }
-    
+
     private void createPlayers() {
         players = new ArrayList<>();
 
