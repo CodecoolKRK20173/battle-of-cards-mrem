@@ -48,8 +48,7 @@ public class Game {
         this.gameView.displayEmptyLine();
 
         // Active player chooses comparison attribute
-        this.gameView.displayInputPrompt("Select comparison attribute");
-        int playerChoice = this.activePlayer.getChoice();
+        int playerChoice = getChoiceFromActivePlayer();
         table.setCardComparator(cardComparators.getCardComparator(playerChoice));
         this.gameView.clearScreen();
 
@@ -79,6 +78,17 @@ public class Game {
         showCards(roundCards);
 
         checkIfWon();
+    }
+
+    private int getChoiceFromActivePlayer() {
+        while (true) {
+            try {
+                this.gameView.displayInputPrompt("Select comparison attribute");
+                return this.activePlayer.getChoice();
+            } catch (IllegalArgumentException e) {
+                this.gameView.displayLine("It's not a valid number");
+            }
+        }
     }
 
     private void takePlayersTopCards() {

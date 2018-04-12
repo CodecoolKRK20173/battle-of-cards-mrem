@@ -16,7 +16,7 @@ public class GameView {
     }
 
     public void displayBlock(StringBuilder block) {
-        System.out.println(block.toString());
+        displayLine(block.toString());
     }
 
     public void displayEmptyLine() {
@@ -30,7 +30,7 @@ public class GameView {
     }
 
     public void displayInputPrompt(String inputPrompt) {
-        System.out.print(inputPrompt + ": ");
+        displayInline(inputPrompt + ": ");
     }
 
     public void displayInline(String text) {
@@ -38,7 +38,7 @@ public class GameView {
     }
 
     public void clearScreen() {
-        System.out.print("\033[H\033[2J");
+        displayLine("\033[H\033[2J");
     }
 
     public void displayCard(Card card) {
