@@ -1,5 +1,6 @@
 package com.codecool.battleofcards.card;
 
+import com.codecool.battleofcards.input.*;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -10,6 +11,7 @@ import java.util.Scanner;
 
 public class Deck implements Shuffleable {
     private List<Card> cards;
+    Input input = new Input();
 
     public Deck(String filename){
         this.cards = new ArrayList<>();
@@ -17,7 +19,7 @@ public class Deck implements Shuffleable {
     }
 
     private void createCards(String filename){
-        String[] statisticsList = readerFromFile(filename).split("\n");
+        String[] statisticsList = input.readerFromFile(filename).split("\n");
         
         for (String line : statisticsList){
             String[] cardStatistic = line.split(",");
@@ -70,23 +72,5 @@ public class Deck implements Shuffleable {
         }
 
         return piles;
-    }
-    
-    public String readerFromFile(String filename) {
-        StringBuilder fileContent = new StringBuilder();
-
-        ClassLoader classLoader = getClass().getClassLoader();
-        Path filePath = Paths.get(classLoader.getResource(filename).getFile());
-
-        try (Scanner reader = new Scanner(filePath)) {
-            while (reader.hasNextLine()) {
-                fileContent.append(reader.nextLine());
-                fileContent.append("\n");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return fileContent.toString();
     }
 }
