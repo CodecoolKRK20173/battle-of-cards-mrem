@@ -1,6 +1,9 @@
 package com.codecool.battleofcards.display;
 
-import com.codecool.battleofcards.player.Player;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import com.codecool.battleofcards.card.Card;
 
 public class GameView {
     public void displayLine(String lineContent) {
@@ -18,8 +21,7 @@ public class GameView {
     }
 
     public void displayInputPrompt(String inputPrompt) {
-        inputPrompt += ": ";
-        System.out.print(inputPrompt);
+        System.out.print(inputPrompt + ": ");
     }
 
     public void displayInline(String text) {
@@ -30,45 +32,58 @@ public class GameView {
         System.out.print("\033[H\033[2J");
     }
 
-    public void displayMenu() {
-        // TODO
-    }
+    public void displayCard(Card card) {
+        StringBuilder cardToPrint = new StringBuilder();
+        String[] cardSplitted = card.toString().split("\n");
 
-    public void displayTable(List<Player> players) {
-
-        for (Player player : players) {
-            System.out.print(centeredString(player.getName()));
-        }
-        System.out.println("");
-
-        for (Player player : players) {
-            System.out.print(centeredString("cards left: " + String.valueOf(player.getNumOfCards())));
-        }
-
-        System.out.println("");
-
-        for (Player player : players) {
-            String[] printCard = player.getCards().peekTopCard().toString().split("\n");
-            for (String card : printCard) {
-                System.out.print(centeredString(card);
+        for (int i = 0; i < 5; i++) {
+            if (i != 0) {
+                cardToPrint.append(i);
+            } else {
+                cardToPrint.append(" ");
             }
+            cardToPrint.append("|");
+            cardToPrint.append(centeredString(cardSplitted[i]));
+            cardToPrint.append("|");
+            cardToPrint.append("\n");
         }
-        System.out.println("");
 
+        System.out.println(cardToPrint.toString());
     }
 
-    public String centeredString(String text){
+    public void displayTable(List<Card> cards) {
+        List<List<String>> allCardsSplitted = new ArrayList<>();
+        for (Card card : cards) {
+            List<String> cardSplitted = Arrays.asList(card.toString().split("\n"));
+            allCardsSplitted.add(cardSplitted);
+        }
 
-        int widthColumn = 30;
+        StringBuilder table = new StringBuilder();
+        for (int i = 0; i <= 4; i++) {
+            if (i != 0) {
+                table.append(i);
+            } else {
+                table.append(" ");
+            }
+
+            table.append("|");
+            for (List<String> card : allCardsSplitted) {
+                table.append(centeredString(card.get(i)));
+                table.append("|");
+            }
+            table.append("\n");
+        }
+
+        System.out.println(table.toString());
+    }
+
+    public String centeredString(String text) {
+        int widthColumn = 35;
         int padSize = widthColumn - text.length();
         int padStart = text.length() + padSize / 2;
         text = String.format("%" + padStart + "s", text);
         text = String.format("%-" + widthColumn  + "s", text);
-        
-        return text;
-    }
 
-    public void displayGameEnd() {
-        // TODO
+        return text;
     }
 }
