@@ -6,7 +6,11 @@ import java.util.List;
 import java.util.Scanner;
 import com.codecool.battleofcards.card.Card;
 import com.codecool.battleofcards.player.*;
+<<<<<<< HEAD
 import com.codecool.battleofcards.reader.*;
+=======
+import com.codecool.battleofcards.input.Input;
+>>>>>>> dev
 
 public class GameView {
     FileReader fileReader = new FileReader();

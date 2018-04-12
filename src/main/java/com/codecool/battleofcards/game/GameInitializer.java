@@ -1,11 +1,13 @@
 package com.codecool.battleofcards.game;
 
 import com.codecool.battleofcards.card.*;
-import com.codecool.battleofcards.display.*;
+import com.codecool.battleofcards.display.GameView;
 import com.codecool.battleofcards.player.*;
 import com.codecool.battleofcards.player.computer.*;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class GameInitializer {
     private final String FILE_NAME;

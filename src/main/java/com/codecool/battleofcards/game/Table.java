@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 import com.codecool.battleofcards.card.Card;
-import com.codecool.battleofcards.card.comparator.*;
 
 public class Table {
     private List<Card> cards;

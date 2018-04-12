@@ -3,7 +3,7 @@ package com.codecool.battleofcards.game;
 import com.codecool.battleofcards.card.Card;
 import com.codecool.battleofcards.card.comparator.CardComparatorFactory;
 import com.codecool.battleofcards.player.*;
-import com.codecool.battleofcards.display.*;
+import com.codecool.battleofcards.display.GameView;
 
 import java.util.*;
 
