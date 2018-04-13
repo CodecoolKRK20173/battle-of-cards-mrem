@@ -17,7 +17,11 @@ import java.util.Scanner;
 import java.io.IOException;
 import java.util.Collections;
 
-
+/**
+ * class required by more advanced AI. Its used to create weights of each card attribute.
+ * </p> It allows HardAI to pick the most valuable attribute of given Card object
+ * @see CardStrenghts
+ */
 public class KnowledgeBase{
 
     private static CardComparatorFactory comparatorFactory;
