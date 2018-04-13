@@ -6,13 +6,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 
-    /**
-    * This class is used to upload Cards data from given csv file.
-    **/
+/**
+* This class is used to upload Cards data from given csv file.
+*/
 
 public class FileReader {
 
-    /*
+    /**
     * This method upload Cards data from given csv file
     * <p>This method throws a <tt>IOException</tt> if given path doesn't exist.
     *
