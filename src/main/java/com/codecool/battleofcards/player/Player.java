@@ -4,7 +4,11 @@ import com.codecool.battleofcards.card.Card;
 import com.codecool.battleofcards.card.Pile;
 
 import java.util.List;
-
+/**
+ * Representing abstract level of player.
+ * <p> implemented with mind of strategy pattern, solving
+ * problem with different implementations of children getChoice() methods.
+ */
 public abstract class Player {
     private final String NAME;
     private Pile cards;
