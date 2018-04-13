@@ -75,11 +75,6 @@ public class KnowledgeBase{
         }
     }
 
-    private double calculatePercentage(int chunk, int size){
-        return ((size - (chunk+1)) * 100) / size;
-    }
-
-
     private List<Card> createCards(){
         FileReader fileReader = new FileReader();
         String[] statisticsList = fileReader.readerFromFile(FILESOURCE).split("\n");

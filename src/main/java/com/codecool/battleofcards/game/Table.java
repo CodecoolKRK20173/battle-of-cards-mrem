@@ -24,7 +24,7 @@ public class Table {
         this.cardsAfterDraw = new ArrayList<>();
     }
 
-    public void setCards(List<Card> cards) {
+    private void setCards(List<Card> cards) {
         this.cards = cards;
 
         if (this.isRoundResolved) {

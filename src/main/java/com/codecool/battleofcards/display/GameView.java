@@ -13,7 +13,7 @@ import com.codecool.battleofcards.reader.*;
  * </p> as in given project specification, it's the only class that has System.out prints.
  */
 public class GameView {
-    FileReader fileReader = new FileReader();
+    private FileReader fileReader = new FileReader();
 
     public void displayLine(String lineContent) {
         System.out.println(lineContent);
@@ -25,12 +25,6 @@ public class GameView {
 
     public void displayEmptyLine() {
         System.out.println();
-    }
-
-    public void displayEmptyLines(int numberOfEmptyLines) {
-        for (int i = 0; i < numberOfEmptyLines; i++) {
-            displayEmptyLine();
-        }
     }
 
     public void displayInputPrompt(String inputPrompt) {

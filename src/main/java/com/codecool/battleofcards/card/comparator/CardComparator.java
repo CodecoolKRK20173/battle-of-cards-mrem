@@ -7,7 +7,7 @@ import java.util.Comparator;
 * This class is used to compare Card objects by given attribute nuber.
 */
 public class CardComparator implements Comparator<Card> {
-    private final int attributeNumber;
+    private final int ATTRIBUTE_NUMBER;
 
     /**
      * Constructor of CardComparator.
@@ -15,7 +15,7 @@ public class CardComparator implements Comparator<Card> {
      * @param  attributeNumber number of attribute of Card object.
      */
     public CardComparator(int attributeNumber) {
-        this.attributeNumber = attributeNumber;
+        this.ATTRIBUTE_NUMBER = attributeNumber;
     }
 
     /**
@@ -26,9 +26,9 @@ public class CardComparator implements Comparator<Card> {
      */
     @Override
     public int compare(Card card, Card otherCard) {
-        if (card.getAttributeValue(this.attributeNumber) > otherCard.getAttributeValue(this.attributeNumber)) {
+        if (card.getAttributeValue(this.ATTRIBUTE_NUMBER) > otherCard.getAttributeValue(this.ATTRIBUTE_NUMBER)) {
             return 1;
-        } else if (card.getAttributeValue(this.attributeNumber) < otherCard.getAttributeValue(this.attributeNumber)) {
+        } else if (card.getAttributeValue(this.ATTRIBUTE_NUMBER) < otherCard.getAttributeValue(this.ATTRIBUTE_NUMBER)) {
             return -1;
         } else {
             return 0;
