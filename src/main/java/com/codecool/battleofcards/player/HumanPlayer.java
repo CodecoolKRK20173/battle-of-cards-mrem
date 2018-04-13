@@ -3,11 +3,14 @@ package com.codecool.battleofcards.player;
 import com.codecool.battleofcards.card.Pile;
 import java.util.Scanner;
 
+/**
+ * Represents user player.
+ */
 public class HumanPlayer extends Player {
     public HumanPlayer(String name, Pile cards) {
         super(name, cards);
     }
-    
+
     @Override
     public int getChoice() {
         Scanner reader = new Scanner(System.in);
