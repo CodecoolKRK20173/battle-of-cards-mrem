@@ -1,5 +1,10 @@
 package com.codecool.battleofcards.card;
 
+/**
+ * Class representing card in game.
+ * <p> each card has name and four attributes.
+ * Name of card is used in equals and hashcode methods, so it shoudl be unique
+ */
 public class Card {
     private final String NAME;
     private final CardAttribute FIRST_ATTRIBUTE;
@@ -7,6 +12,11 @@ public class Card {
     private final CardAttribute THIRD_ATTRIBUTE;
     private final CardAttribute FOURTH_ATTRIBUTE;
 
+/**
+ * Constructs Card object
+ * @param name           name of card.
+ * @param cardAttributes attributes of Card object.
+ */
     public Card(String name, CardAttribute... cardAttributes) {
         this.NAME = name;
         this.FIRST_ATTRIBUTE = cardAttributes[0];
@@ -62,6 +72,11 @@ public class Card {
                                                                            this.FOURTH_ATTRIBUTE.getValue());
     }
 
+/**
+ * equals comparing only depending on Card name.
+ * @param  obj other object to compare with Card
+ * @return     true|false
+ */
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -75,6 +90,11 @@ public class Card {
             return false;
         return true;
     }
+
+/**
+ * hash code hashes only name of card.
+ * @return hash code
+ */
 
     @Override
     public int hashCode() {
