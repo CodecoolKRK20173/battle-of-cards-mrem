@@ -10,6 +10,10 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Helper class creating Player list based on user input.
+ * <p> Required to start Game. 
+ */
 public class GameInitializer {
     private final String FILE_NAME;
     private Deck deck;
