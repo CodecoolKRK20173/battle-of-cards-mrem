@@ -8,6 +8,10 @@ import com.codecool.battleofcards.card.Card;
 import com.codecool.battleofcards.player.*;
 import com.codecool.battleofcards.reader.*;
 
+/**
+ * class required to pretty print stage for users in terminal.
+ * </p> as in given project specification, it's the only class that has System.out prints.
+ */
 public class GameView {
     FileReader fileReader = new FileReader();
 
@@ -90,7 +94,7 @@ public class GameView {
         StringBuilder names = new StringBuilder();
         names.append("  ");
         for(Player player : players) {
-            names.append(centeredString(player.getName()+ " - Cards left: " + player.getNumOfCards()) + " ");          
+            names.append(centeredString(player.getName()+ " - Cards left: " + player.getNumOfCards()) + " ");
         }
         displayBlock(names);
         displayEmptyLine();
