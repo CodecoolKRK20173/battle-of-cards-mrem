@@ -7,6 +7,9 @@ import java.util.Comparator;
 
 import com.codecool.battleofcards.card.Card;
 
+/**
+ * Represents Table where top cards from each player are compared and trophy cards appears after rounds due to draw.
+ */
 public class Table {
     private List<Card> cards;
     private List<Card> cardsAfterDraw;

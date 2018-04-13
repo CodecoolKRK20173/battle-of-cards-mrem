@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * simple AI that behaves randomly.
+ */
 public class NormalAI extends ComputerPlayer {
     private static List<String> normalAINames;
     private static Random generator;

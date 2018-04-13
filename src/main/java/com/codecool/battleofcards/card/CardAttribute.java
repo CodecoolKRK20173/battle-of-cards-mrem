@@ -1,5 +1,8 @@
 package com.codecool.battleofcards.card;
 
+/**
+ * supporting class for Card, it contains all data required to manage Attributes
+ */
 public class CardAttribute {
     private final String LABEL;
     private final String ANNOTATED_LABEL;

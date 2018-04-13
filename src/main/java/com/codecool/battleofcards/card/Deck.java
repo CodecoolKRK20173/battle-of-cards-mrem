@@ -8,6 +8,11 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * Class representing all cards in game as deck of cards.
+ * </p> implements Shuffleable interface
+ * @see Shuffleable
+ */
 public class Deck implements Shuffleable {
     private List<Card> cards;
     FileReader fileReader = new FileReader();
@@ -19,10 +24,10 @@ public class Deck implements Shuffleable {
 
     private void createCards(String filename){
         String[] statisticsList = fileReader.readerFromFile(filename).split("\n");
-        
+
         for (String line : statisticsList){
             String[] cardStatistic = line.split(",");
-                
+
                 String name = cardStatistic[0];
 
                 double firstValue = Double.valueOf(cardStatistic[1]);
@@ -34,7 +39,7 @@ public class Deck implements Shuffleable {
                 CardAttribute secondAttribute = new CardAttribute("Population size",
                                                                   "Population (mln)",
                                                                   secondValue);
-                
+
                 double thirdValue = Double.valueOf(cardStatistic[3]);
                 CardAttribute thirdAttribute = new CardAttribute("Gross Domestic Product",
                                                                  "GDP (bln €)",
@@ -63,7 +68,7 @@ public class Deck implements Shuffleable {
         int playerPileSize = this.cards.size() / numOfPlayers;
         int nextPileStartPos = 0;
         int nextPileEndPos = playerPileSize;
-        
+
         for (int i = 0; i < numOfPlayers; i++) {
             piles.add(new Pile(this.cards.subList(nextPileStartPos, nextPileEndPos)));
             nextPileStartPos += playerPileSize;

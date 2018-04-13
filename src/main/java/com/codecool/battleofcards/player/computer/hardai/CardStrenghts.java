@@ -3,6 +3,9 @@ package com.codecool.battleofcards.player.computer.hardai;
 import java.util.Arrays;
 import java.util.Collections;
 
+/**
+ * Helper class representing weights of values of Card object
+ */
 public class CardStrenghts{
 
     private int firstAttribute, secondAttribute, thirdAttribute, fourthAttribute;

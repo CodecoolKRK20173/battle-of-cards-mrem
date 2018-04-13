@@ -7,6 +7,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import com.codecool.battleofcards.player.computer.ComputerPlayer;
 
+/**
+ * Class representing more advanced AI
+ * </p>HardAI chooses Card Attribute with best chances to win.
+ * @see KnowledgeBase
+ */
 public class HardAI extends ComputerPlayer {
     private static List<String> hardAINames;
     private static Random generator;

@@ -7,6 +7,11 @@ import com.codecool.battleofcards.display.GameView;
 
 import java.util.*;
 
+/**
+ * Class representing started game.
+ * </p> requires already existing Player list
+ * @see GameInitializer
+ */
 public class Game {
     private final GameView gameView;
 
@@ -24,9 +29,12 @@ public class Game {
         this.cardComparators = new CardComparatorFactory();
         this.table = new Table();
         this.isActive = true;
-    
+
     }
 
+    /**
+     * game main loop
+     */
     public void play() {
         this.gameView.clearScreen();
         this.activePlayer = this.players.get(0);
@@ -37,6 +45,9 @@ public class Game {
         }
     }
 
+    /**
+     * Round logic
+     */
     private void handleRound() {
         // Active player peeks his top card
         this.gameView.displayLine("Current player: " + this.activePlayer.getName());
